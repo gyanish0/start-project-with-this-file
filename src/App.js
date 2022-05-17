@@ -8,13 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./components/NotFound";
 import GitRepos from "./views/pages/github/GitRepos";
 import AuthGuard from "./components/AuthGuard";
-import Header from "./layouts/HomeLayout/header";
+import HomeLayout from "./layouts/HomeLayout";
 function App() {
   return (
-    <div>
-      <div>
-        <Header />
-      </div>
+    <HomeLayout>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -30,7 +27,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />
-    </div>
+    </HomeLayout>
   );
 }
 

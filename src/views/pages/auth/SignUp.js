@@ -108,7 +108,7 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-          <Typography variant="h6" onClick={() => navigate("/")}>
+          <Typography variant="h6" onClick={() => navigate("/login")}>
             Already have an account? Log in
           </Typography>
         </div>
