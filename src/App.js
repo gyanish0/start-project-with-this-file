@@ -8,9 +8,13 @@ import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./components/NotFound";
 import GitRepos from "./views/pages/github/GitRepos";
 import AuthGuard from "./components/AuthGuard";
+import Header from "./layouts/HomeLayout/header";
 function App() {
   return (
     <div>
+      <div>
+        <Header />
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
