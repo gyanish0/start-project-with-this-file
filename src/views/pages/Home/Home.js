@@ -1,13 +1,17 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import Page from "../../../components/Page";
-import Banner from "./Banner";
+// import Banner from "./Banner";
+import GitDetails from "../github/GitDetails";
 function Home(props) {
   return (
-    <Page title="Home">
-      <Box>
-        <Banner />
-      </Box>
+    <Page title="GitHub | Home">
+      <Container>
+        <Box>
+          {/* <Banner /> */}
+          <GitDetails />
+        </Box>
+      </Container>
     </Page>
   );
 }

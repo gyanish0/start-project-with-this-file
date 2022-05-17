@@ -46,6 +46,7 @@ const Context = ({ children }) => {
     quote,
     user,
     isLogin,
+    UserDataSelf,
   };
   return <UserContext.Provider value={data1}>{children}</UserContext.Provider>;
 };
