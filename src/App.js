@@ -7,12 +7,20 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./components/NotFound";
 import GitRepos from "./views/pages/github/GitRepos";
+import AuthGuard from "./components/AuthGuard";
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/git" element={<GitRepos />} />
+        <Route
+          path="/git"
+          element={
+            <AuthGuard>
+              <GitRepos />
+            </AuthGuard>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />

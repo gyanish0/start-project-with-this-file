@@ -43,12 +43,11 @@ const useStyles = makeStyles(() => ({
 const Login = () => {
   const navigate = useNavigate();
   const classes = useStyles();
-  const auth = useContext(UserContext);
-  console.log(auth);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [quote, setQuote] = useState("");
-  console.log(quote);
+  const user = useContext(UserContext);
+
   const loginData = async () => {
     try {
       const res = await axios.post(ApiConfig.login, {
@@ -60,7 +59,7 @@ const Login = () => {
         window.sessionStorage.setItem("token", res.data.token);
         toast.success(`${userName} Login successful`);
         navigate("/");
-        auth.setData(res.data.token);
+        user.userLogIn(true);
       }
     } catch (error) {
       console.log("Error", error);

@@ -3,11 +3,19 @@ import React, { createContext, useEffect, useState } from "react";
 import apiConfig from "../config/ApiConfig";
 export const UserContext = createContext();
 
+
+
+
+function checkLogin() {
+  const accessToken = window.sessionStorage.getItem("token");
+  return accessToken ? true : false;
+}
 const Context = ({ children }) => {
   const [data, setData] = useState({});
   const [quote, setQuote] = useState("");
   const [user, setUser] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(checkLogin());
+  console.log(isLogin);
   const getQuote = async () => {
     try {
       const res = await axios({
@@ -30,12 +38,19 @@ const Context = ({ children }) => {
       });
       if (res.status === 200) {
         setUser(res.data);
-        setIsLogin(true);
+      } else {
+        setIsLogin(false);
       }
     } catch (error) {
       console.log("Error", error);
     }
   };
+  useEffect(() => {
+    if (isLogin) {
+      UserDataSelf();
+      console.log("log", isLogin);
+    }
+  }, [isLogin]);
   useEffect(() => {
     getQuote();
   }, []);
@@ -46,7 +61,10 @@ const Context = ({ children }) => {
     quote,
     user,
     isLogin,
-    UserDataSelf,
+    userLoggedIn: isLogin,
+    userLogIn: (type) => {
+      setIsLogin(type);
+    },
   };
   return <UserContext.Provider value={data1}>{children}</UserContext.Provider>;
 };

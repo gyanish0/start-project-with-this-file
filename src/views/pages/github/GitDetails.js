@@ -161,7 +161,7 @@ const GitDetails = () => {
               size="large"
               color="primary"
               type="submit"
-              onClick={() => navigate("/gitrepo", { state: repos })}
+              onClick={() => navigate("/git", { state: repos })}
             >
               Go To Repos List
             </Button>
