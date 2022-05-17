@@ -6,11 +6,13 @@ import {
   makeStyles,
   Button,
   Drawer,
+  IconButton,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import DehazeIcon from "@material-ui/icons/Dehaze";
 import Logo from "../../components/Logo";
 import { UserContext } from "../../context/User";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 const useStyles = makeStyles((theme) => ({
   navBar: {
     background: "#0f0f47",
@@ -86,9 +88,9 @@ const useStyles = makeStyles((theme) => ({
   menu: {
     width: "200px",
     textAlign: "center",
-    marginTop: "40px",
+    marginTop: "0px",
     "& a": {
-      color: "#fff",
+      color: "#000",
     },
   },
 }));
@@ -177,6 +179,11 @@ function TopBar() {
                 open={openMenu}
                 onClose={() => setOpenMenu(false)}
               >
+                <Box style={{ display: "flex", justifyContent: "end" }}>
+                  <IconButton onClick={() => setOpenMenu(false)}>
+                    <AiOutlineCloseCircle />
+                  </IconButton>
+                </Box>
                 <Box className={classes.menu}>
                   <Button
                     fullWidth
