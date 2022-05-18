@@ -2,7 +2,7 @@ import React from "react";
 import GitProfile from "@arifszn/gitprofile";
 import "@arifszn/gitprofile/dist/style.css";
 // gitprofile.config.js
-
+import Page from "../../../components/Page";
 const config = {
   github: {
     username: "gyanish0", // Your GitHub org/user name. (Required)
@@ -136,16 +136,13 @@ const config = {
     },
   },
 };
-const GitPort = (props) => {
-  const collection = document.getElementsByClassName("h-screen");
-  console.log(collection);
-
+const GitPort = () => {
   return (
-    <>
+    <Page title="GitHub | Home">
       <div>
         <GitProfile config={config} />
       </div>
-    </>
+    </Page>
   );
 };
 

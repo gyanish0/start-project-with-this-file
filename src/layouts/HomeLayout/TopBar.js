@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
       color: "grey",
     },
   },
-  button: {
+  button1: {
     borderRadius: "20px",
 
     backgroundColor: "#ff157a",
@@ -157,7 +157,7 @@ function TopBar() {
               {user.userLoggedIn ? (
                 <Box className={classes.options}>
                   <Button
-                    className={classes.button}
+                    className={classes.button1}
                     to="/profile"
                     component={Link}
                     style={{ textDecoration: "none", color: "#fff" }}
@@ -168,7 +168,7 @@ function TopBar() {
               ) : (
                 <Box className={classes.options}>
                   <Button
-                    className={classes.button}
+                    className={classes.button1}
                     to="/signup"
                     component={Link}
                     style={{ textDecoration: "none", color: "#fff" }}
