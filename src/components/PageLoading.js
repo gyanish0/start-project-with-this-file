@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Box } from "@material-ui/core";
+import { makeStyles, Box, LinearProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,8 +31,8 @@ export default function PageLoading() {
   return (
     <div className={classes.root}>
       <Box width={300}>
-        {/* <LinearProgress height={10} /> */}
-        <img className={classes.loader} src="/images/loader.gif" alt="loader" />
+        <LinearProgress height={20} />
+        {/* <img className={classes.loader} src="/images/loader.gif" alt="loader" /> */}
       </Box>
     </div>
   );

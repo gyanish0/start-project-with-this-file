@@ -97,7 +97,8 @@ const Login = () => {
             </div>
           </div>
           <Typography variant="h6" onClick={() => navigate("/signup")}>
-            Don’t have an account? Sign up
+            Don’t have an account?
+            <span style={{ color: "#0969da" }}> Sign up</span>
           </Typography>
         </div>
       </Container>

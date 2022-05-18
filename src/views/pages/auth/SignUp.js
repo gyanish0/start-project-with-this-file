@@ -109,7 +109,8 @@ const SignUp = () => {
             </div>
           </div>
           <Typography variant="h6" onClick={() => navigate("/login")}>
-            Already have an account? Log in
+            Already have an account?{" "}
+            <span style={{ color: "#0969da" }}>Log in</span>
           </Typography>
         </div>
       </Container>
