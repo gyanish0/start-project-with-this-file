@@ -8,7 +8,6 @@ function Home(props) {
     <Page title="GitHub | Home">
       <Container>
         <Box>
-          {/* <Banner /> */}
           <GitDetails />
         </Box>
       </Container>

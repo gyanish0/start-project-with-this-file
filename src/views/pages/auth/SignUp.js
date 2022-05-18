@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ApiConfig from "../../../config/ApiConfig";
+import SignUp2 from "./SignUp2";
 const useStyles = makeStyles(() => ({
   box1: {
     height: "75vh",
@@ -112,6 +113,9 @@ const SignUp = () => {
             Already have an account?{" "}
             <span style={{ color: "#0969da" }}>Log in</span>
           </Typography>
+        </div>
+        <div>
+          <SignUp2 />
         </div>
       </Container>
     </Box>

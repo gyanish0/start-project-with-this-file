@@ -125,6 +125,16 @@ function TopBar() {
             <Box className={classes.options}>
               <Typography
                 variant="h6"
+                to="/aboutme"
+                component={Link}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                About me
+              </Typography>
+            </Box>
+            <Box className={classes.options}>
+              <Typography
+                variant="h6"
                 style={{ textDecoration: "none", color: "#fff" }}
                 to="/about"
                 component={Link}
