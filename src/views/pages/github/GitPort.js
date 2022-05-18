@@ -1,7 +1,6 @@
 import React from "react";
 import GitProfile from "@arifszn/gitprofile";
 import "@arifszn/gitprofile/dist/style.css";
-// gitprofile.config.js
 import Page from "../../../components/Page";
 const config = {
   github: {
