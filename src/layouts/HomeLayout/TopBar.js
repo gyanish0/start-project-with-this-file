@@ -10,7 +10,6 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import DehazeIcon from "@material-ui/icons/Dehaze";
-import Logo from "../../components/Logo";
 import { UserContext } from "../../context/User";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 const useStyles = makeStyles((theme) => ({

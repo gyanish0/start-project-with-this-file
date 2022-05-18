@@ -45,7 +45,7 @@ const Login = () => {
   const classes = useStyles();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [quote, setQuote] = useState("");
+  // const [quote, setQuote] = useState("");
   const user = useContext(UserContext);
 
   const loginData = async () => {
@@ -55,7 +55,7 @@ const Login = () => {
         password: password,
       });
       if (res.status === 200) {
-        setQuote(res.data);
+        // setQuote(res.data);
         window.sessionStorage.setItem("token", res.data.token);
         toast.success(`${userName} Login successful`);
         navigate("/");

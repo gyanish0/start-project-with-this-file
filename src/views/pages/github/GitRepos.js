@@ -27,7 +27,7 @@ const GitRepos = () => {
   };
   useEffect(() => {
     getRepoData();
-  }, []);
+  });
   return (
     <div>
       <Typography variant="h4">Git Repos</Typography>
