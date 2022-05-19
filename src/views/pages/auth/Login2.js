@@ -39,16 +39,16 @@ const Login2 = () => {
   };
   return (
     <div>
-      <section class="container">
-        <div class="login-container">
-          <div class="circle circle-one"></div>
-          <div class="form-container">
+      <section className="container">
+        <div className="login-container">
+          <div className="circle circle-one"></div>
+          <div className="form-container">
             <img
               src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png"
               alt="illustration"
-              class="illustration"
+              className="illustration"
             />
-            <h1 class="opacity">LOGIN</h1>
+            <h1 className="opacity">LOGIN</h1>
 
             <input
               type="text"
@@ -61,16 +61,16 @@ const Login2 = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             {loading === true ? (
-              <button class="opacity" disabled={loading}>
+              <button className="opacity" disabled={loading}>
                 LOADING....
               </button>
             ) : (
-              <button class="opacity" onClick={loginData}>
+              <button className="opacity" onClick={loginData}>
                 SUBMIT
               </button>
             )}
 
-            <div class="register-forget opacity">
+            <div className="register-forget opacity">
               <Typography
                 variant="h6"
                 onClick={() => navigate("/signup")}

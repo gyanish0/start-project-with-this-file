@@ -7,13 +7,12 @@ import NotFound from "./components/NotFound";
 import AuthGuard from "./components/AuthGuard";
 import HomeLayout from "./layouts/HomeLayout";
 import PageLoading from "./components/PageLoading";
-import AboutLayout from "./layouts/AboutLayout";
+// import AboutLayout from "./layouts/AboutLayout";
 
 const Home = lazy(() => import("./views/pages/Home/Home"));
 const GitRepos = lazy(() => import("./views/pages/github/GitRepos"));
 const Login = lazy(() => import("./views/pages/auth/Login2"));
 const SignUp = lazy(() => import("./views/pages/auth/SignUp2"));
-const GitPort = lazy(() => import("./views/pages/github/GitPort"));
 const Profile = lazy(() => import("./views/pages/user/Profile"));
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
       <Suspense fallback={<PageLoading />}>
         <Routes comonent={HomeLayout}>
           <Route path="/" element={<HomeLayout />}>
-            <Route path="/" element={<Home />} />
+            <Route index element={<Home />} />
             <Route
               path="/git"
               element={
@@ -41,9 +40,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
           </Route>
-          <Route path="/aboutme" element={<AboutLayout />}>
-            <Route path="/aboutme" element={<GitPort />} />
-          </Route>
+          {/* <Route path="/aboutme" element={<AboutLayout />}>
+            <Route index element={<GitPort />} />
+          </Route> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

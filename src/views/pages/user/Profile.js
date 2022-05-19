@@ -39,14 +39,16 @@ const Profile = () => {
           <Typography variant="h2">Profile</Typography>
           <div>
             <Typography variant="h5">
-              FirstName : {user.user.firstName}
+              FirstName :&nbsp;
+              {user.user.firstName ? user.user.firstName : "User FirstName"}
             </Typography>
             <Typography variant="h5">
-              LastName : {user.user.lastName}
+              LastName :&nbsp;
+              {user.user.lastName ? user.user.lastName : "User LastName"}
             </Typography>
             <Typography variant="h5">
-              {" "}
-              UserName : {user.user.username}
+              UserName :&nbsp;
+              {user.user.username ? user.user.username : "User UserName"}
             </Typography>
           </div>
         </div>

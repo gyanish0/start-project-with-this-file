@@ -37,63 +37,61 @@ const SignUp2 = () => {
   };
   return (
     <div>
-      <body>
-        <section class="container">
-          <div class="login-container">
-            <div class="circle circle-one"></div>
-            <div class="form-container">
-              <img
-                src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png"
-                alt="illustration"
-                class="illustration"
-              />
-              <h1 class="opacity">SIGNUP</h1>
-              <input
-                type="text"
-                placeholder="USERNAME"
-                onChange={(e) => setUserName(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="FIRSTNAME"
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="LASTNAME"
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="PASSWORD"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {loading === true ? (
-                <button class="opacity" disabled={loading}>
-                  LOADING.....
-                </button>
-              ) : (
-                <button class="opacity" onClick={signInData}>
-                  SUBMIT
-                </button>
-              )}
+      <section className="container">
+        <div className="login-container">
+          <div className="circle circle-one"></div>
+          <div className="form-container">
+            <img
+              src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png"
+              alt="illustration"
+              className="illustration"
+            />
+            <h1 className="opacity">SIGNUP</h1>
+            <input
+              type="text"
+              placeholder="USERNAME"
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="FIRSTNAME"
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="LASTNAME"
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="PASSWORD"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {loading === true ? (
+              <button className="opacity" disabled={loading}>
+                LOADING.....
+              </button>
+            ) : (
+              <button className="opacity" onClick={signInData}>
+                SUBMIT
+              </button>
+            )}
 
-              <div class="register-forget opacity">
-                <Typography
-                  variant="h6"
-                  onClick={() => navigate("/login")}
-                  style={{ fontSize: "18px" }}
-                >
-                  Already have an account?{" "}
-                  <span style={{ color: "#0969da", cursor: "pointer" }}>
-                    Log in
-                  </span>
-                </Typography>
-              </div>
+            <div className="register-forget opacity">
+              <Typography
+                variant="h6"
+                onClick={() => navigate("/login")}
+                style={{ fontSize: "18px" }}
+              >
+                Already have an account?{" "}
+                <span style={{ color: "#0969da", cursor: "pointer" }}>
+                  Log in
+                </span>
+              </Typography>
             </div>
           </div>
-        </section>
-      </body>
+        </div>
+      </section>
     </div>
   );
 };

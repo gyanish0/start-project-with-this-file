@@ -15,7 +15,6 @@ const Context = ({ children }) => {
   const [quote, setQuote] = useState("");
   const [user, setUser] = useState("");
   const [isLogin, setIsLogin] = useState(checkLogin());
-  console.log(isLogin);
   const getQuote = async () => {
     try {
       const res = await axios({
