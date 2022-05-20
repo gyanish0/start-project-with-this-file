@@ -1,30 +1,40 @@
-import { Typography } from "@material-ui/core";
+import { FormHelperText, Typography } from "@material-ui/core";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import apiConfig from "../../../config/ApiConfig";
 import { UserContext } from "../../../context/User";
+import { Form, Formik } from "formik";
+import * as yup from "yup";
 import "./login2.css";
+const formValidationSchema = yup.object().shape({
+  userName: yup.string().required("UserName is Required"),
+  password: yup.string().required("Password is Required"),
+});
+const formInitialSchema = {
+  userName: "",
+  password: "",
+};
 const Login2 = () => {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  // const [userName, setUserName] = useState("");
+  // const [password, setPassword] = useState("");
   // const [quote, setQuote] = useState("");
   const [loading, setLoading] = useState(false);
   const user = useContext(UserContext);
 
-  const loginData = async () => {
+  const loginData = async (values) => {
     setLoading(true);
     try {
       const res = await axios.post(apiConfig.login, {
-        username: userName,
-        password: password,
+        username: values.userName,
+        password: values.password,
       });
       if (res.status === 200) {
         // setQuote(res.data);
         window.sessionStorage.setItem("token", res.data.token);
-        toast.success(`${userName} Login successful`);
+        toast.success(`${values.userName} Login successful`);
         navigate("/");
         user.userLogIn(true);
         setLoading(false);
@@ -49,27 +59,56 @@ const Login2 = () => {
               className="illustration"
             />
             <h1 className="opacity">LOGIN</h1>
-
-            <input
-              type="text"
-              placeholder="USERNAME"
-              onChange={(e) => setUserName(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="PASSWORD"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {loading === true ? (
-              <button className="opacity" disabled={loading}>
-                LOADING....
-              </button>
-            ) : (
-              <button className="opacity" onClick={loginData}>
-                SUBMIT
-              </button>
-            )}
-
+            <Formik
+              initialValues={formInitialSchema}
+              validationSchema={formValidationSchema}
+              onSubmit={(values) => loginData(values)}
+            >
+              {({
+                errors,
+                handleBlur,
+                handleChange,
+                handleSubmit,
+                touched,
+                values,
+              }) => (
+                <Form>
+                  <input
+                    type="text"
+                    placeholder="USERNAME"
+                    name="userName"
+                    value={values.userName}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    error={Boolean(touched.userName && errors.userName)}
+                  />
+                  <FormHelperText style={{ color: "red" }}>
+                    {touched.userName && errors.userName}
+                  </FormHelperText>
+                  <input
+                    type="password"
+                    placeholder="PASSWORD"
+                    name="password"
+                    value={values.password}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    error={Boolean(touched.password && errors.password)}
+                  />
+                  <FormHelperText style={{ color: "red" }}>
+                    {touched.password && errors.password}
+                  </FormHelperText>
+                  {loading === true ? (
+                    <button className="opacity" disabled={loading}>
+                      LOADING....
+                    </button>
+                  ) : (
+                    <button className="opacity" type="submit">
+                      SUBMIT
+                    </button>
+                  )}
+                </Form>
+              )}
+            </Formik>
             <div className="register-forget opacity">
               <Typography
                 variant="h6"
