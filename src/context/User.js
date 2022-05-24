@@ -3,9 +3,6 @@ import React, { createContext, useEffect, useState } from "react";
 import apiConfig from "../config/ApiConfig";
 export const UserContext = createContext();
 
-
-
-
 function checkLogin() {
   const accessToken = window.sessionStorage.getItem("token");
   return accessToken ? true : false;
