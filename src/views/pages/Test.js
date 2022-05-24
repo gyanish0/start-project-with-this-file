@@ -1,12 +1,15 @@
 import { Typography } from "@material-ui/core";
 import axios from "axios";
 import moment from "moment";
+import { TitleBar } from "react-desktop/windows";
 import React, { useEffect, useState } from "react";
 import { calculateTimeLeft } from "../../utils";
-const endTime = 1654783690;
+const endTime = 1659763805;
 
 const Test = () => {
   const [timeLeft, setTimeLeft] = useState("");
+  const date = new Date(endTime * 1000);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft(new Date(parseInt(endTime) * 1000)));
@@ -17,9 +20,9 @@ const Test = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        "https://itunes.apple.com/in/rss/topalbums/limit=100/json"
+        "https://api.openbrewerydb.org/breweries?page=1&per_page=1000"
       );
-      console.log(res.data.feed.entry);
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
