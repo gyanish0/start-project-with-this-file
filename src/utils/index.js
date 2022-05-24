@@ -37,6 +37,7 @@ export function copyToClipboard() {
   navigator.clipboard.writeText(copyText).then(() => {
     // Alert the user that the action took place.
     // Nobody likes hidden stuff being done under the hood!
+    // https://stackabuse.com/how-to-copy-to-clipboard-in-javascript-with-the-clipboard-api/
     alert("Copied to clipboard");
   });
 }
