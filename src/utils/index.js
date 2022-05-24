@@ -32,5 +32,14 @@ export function copyTextHandler(id) {
   navigator.clipboard.writeText(id);
 }
 
+export function copyToClipboard() {
+  var copyText = document.getElementById("content").value;
+  navigator.clipboard.writeText(copyText).then(() => {
+    // Alert the user that the action took place.
+    // Nobody likes hidden stuff being done under the hood!
+    alert("Copied to clipboard");
+  });
+}
+
 export const cancelTokenSource = axios.CancelToken.source;
 // cancelToken: cancelTokenSource && cancelTokenSource.token
