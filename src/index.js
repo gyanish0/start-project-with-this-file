@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import Context from "./context/User";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+window.$name = "Gyanish";
 root.render(
   <>
     <BrowserRouter>

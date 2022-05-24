@@ -7,6 +7,7 @@ import NotFound from "./components/NotFound";
 import AuthGuard from "./components/AuthGuard";
 import HomeLayout from "./layouts/HomeLayout";
 import PageLoading from "./components/PageLoading";
+import Test from "./views/pages/Test";
 // import AboutLayout from "./layouts/AboutLayout";
 
 const Home = lazy(() => import("./views/pages/Home/Home"));
@@ -15,6 +16,8 @@ const Login = lazy(() => import("./views/pages/auth/Login2"));
 const SignUp = lazy(() => import("./views/pages/auth/SignUp2"));
 const Profile = lazy(() => import("./views/pages/user/Profile"));
 function App() {
+  // const name = window.$name;
+  // console.log(name);
   return (
     <>
       <Suspense fallback={<PageLoading />}>
@@ -44,6 +47,7 @@ function App() {
             <Route index element={<GitPort />} />
           </Route> */}
           <Route path="*" element={<NotFound />} />
+          <Route path="demo" element={<Test />} />
         </Routes>
       </Suspense>
       <ToastContainer />
