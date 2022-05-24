@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function sortAddress(add) {
   const sortAdd = `${add.slice(0, 6)}...${add.slice(add.length - 4)}`;
   return sortAdd;
@@ -29,3 +31,6 @@ export function isValidContact(value) {
 export function copyTextHandler(id) {
   navigator.clipboard.writeText(id);
 }
+
+export const cancelTokenSource = axios.CancelToken.source;
+// cancelToken: cancelTokenSource && cancelTokenSource.token
