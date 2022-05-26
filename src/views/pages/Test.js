@@ -45,10 +45,12 @@ const columns = [
     sortable: true,
   },
 ];
+// https://rapidapi.com/googlecloud/api/google-translate1/
 const Test = () => {
   const [timeLeft, setTimeLeft] = useState("");
   const [desh, setDesh] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [languages, setLanguages] = useState("en");
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft(new Date(parseInt(endTime) * 1000)));
@@ -57,7 +59,7 @@ const Test = () => {
   });
 
   const getData = async () => {
-    setLoading(true);
+    setLoading(false);
     try {
       const res = await axios.get("https://restcountries.com/v3.1/all");
       if (res.status === 200) {
@@ -68,8 +70,30 @@ const Test = () => {
       console.log(error);
     }
   };
+  const getLanguages = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(
+        "https://google-translate1.p.rapidapi.com/language/translate/v2/languages",
+        {
+          headers: {
+            "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
+            "X-RapidAPI-Key":
+              "3879e8726amsh28d0bdcae7d71c1p148e92jsna2f2b5a6ca87",
+          },
+        }
+      );
+      if (res.status === 200) {
+        console.log(res.data.data.languages);
+        setLanguages(res.data.data.languages);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    getData();
+    getLanguages();
   }, []);
 
   const tableData = {
