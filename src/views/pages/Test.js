@@ -63,7 +63,6 @@ const Test = () => {
       if (res.status === 200) {
         setDesh(res.data);
         setLoading(false);
-        console.log("dhhkf");
       }
     } catch (error) {
       console.log(error);
