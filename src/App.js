@@ -8,6 +8,7 @@ import AuthGuard from "./components/AuthGuard";
 import HomeLayout from "./layouts/HomeLayout";
 import PageLoading from "./components/PageLoading";
 import Test from "./views/pages/Test";
+import GoogleSearch from "./views/pages/google/GoogleSearch";
 // import AboutLayout from "./layouts/AboutLayout";
 
 const Home = lazy(() => import("./views/pages/Home/Home"));
@@ -48,6 +49,7 @@ function App() {
           </Route> */}
           <Route path="*" element={<NotFound />} />
           <Route path="demo" element={<Test />} />
+          <Route path="search" element={<GoogleSearch />} />
         </Routes>
       </Suspense>
       <ToastContainer />

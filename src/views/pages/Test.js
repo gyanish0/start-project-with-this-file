@@ -1,4 +1,14 @@
-import { CircularProgress, Container, Typography } from "@material-ui/core";
+import {
+  CircularProgress,
+  Container,
+  Typography,
+  Select,
+  MenuItem,
+  Button,
+  Grid,
+  TextField,
+  Box,
+} from "@material-ui/core";
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -46,11 +56,16 @@ const columns = [
   },
 ];
 // https://rapidapi.com/googlecloud/api/google-translate1/
+
 const Test = () => {
   const [timeLeft, setTimeLeft] = useState("");
   const [desh, setDesh] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [languages, setLanguages] = useState("en");
+  const [languages, setLanguages] = useState([]);
+  const [targetLang, setTargetLang] = useState("hi");
+  const [sourceLang, setSourceLang] = useState("en");
+  const [getInput, setGetInput] = useState("");
+  const [result, setResult] = useState("");
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft(new Date(parseInt(endTime) * 1000)));
@@ -84,7 +99,6 @@ const Test = () => {
         }
       );
       if (res.status === 200) {
-        console.log(res.data.data.languages);
         setLanguages(res.data.data.languages);
         setLoading(false);
       }
@@ -95,6 +109,32 @@ const Test = () => {
   useEffect(() => {
     getLanguages();
   }, []);
+
+  const encodedParams = new URLSearchParams();
+  encodedParams.append("q", getInput);
+  encodedParams.append("target", targetLang);
+  encodedParams.append("source", sourceLang);
+
+  const options = {
+    method: "POST",
+    url: "https://google-translate1.p.rapidapi.com/language/translate/v2",
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "Accept-Encoding": "application/gzip",
+      "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
+      "X-RapidAPI-Key": "3879e8726amsh28d0bdcae7d71c1p148e92jsna2f2b5a6ca87",
+    },
+    data: encodedParams,
+  };
+
+  const translateText = async () => {
+    try {
+      const res = await axios.request(options);
+      setResult(res.data.data.translations[0].translatedText);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const tableData = {
     columns,
@@ -145,6 +185,72 @@ const Test = () => {
           <CircularProgress />
         </div>
       )}
+      <Grid container spacing={3}>
+        <Grid item lg={6} md={6} sm={6} xs={12}>
+          <div>
+            <label>Choose a Source Language:</label>
+            <Select
+              id="state"
+              form="statefrom"
+              onChange={(e) => setSourceLang(e.target.value)}
+              variant="outlined"
+              fullWidth
+              value={sourceLang}
+            >
+              {languages?.map((data, i) => (
+                <MenuItem value={data.language} key={i}>
+                  {data.language}
+                </MenuItem>
+              ))}
+            </Select>
+          </div>
+          <Box mt={3}>
+            <TextField
+              id="outlined-multiline-static"
+              multiline
+              minRows={4}
+              defaultValue="Enter Text"
+              variant="outlined"
+              fullWidth
+              onChange={(e) => setGetInput(e.target.value)}
+            />
+          </Box>
+        </Grid>
+        <Grid item lg={6} md={6} sm={6} xs={12}>
+          <div>
+            <label>Choose a Target Language:</label>
+            <Select
+              id="state"
+              form="statefrom"
+              onChange={(e) => setTargetLang(e.target.value)}
+              variant="outlined"
+              fullWidth
+              value={targetLang}
+            >
+              {languages?.map((data, i) => (
+                <MenuItem value={data.language} key={i}>
+                  {data.language}
+                </MenuItem>
+              ))}
+            </Select>
+          </div>
+          <Box mt={3}>
+            <TextField
+              id="outlined-multiline-static"
+              multiline
+              minRows={4}
+              variant="outlined"
+              fullWidth
+              value={result}
+            />
+          </Box>
+        </Grid>
+      </Grid>
+      <Box mt={2}>
+        <Button variant="outlined" onClick={() => translateText()}>
+          Submit
+        </Button>
+      </Box>
     </Container>
   );
 };
