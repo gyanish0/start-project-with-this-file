@@ -190,8 +190,6 @@ const Test = () => {
           <div>
             <label>Choose a Source Language:</label>
             <Select
-              id="state"
-              form="statefrom"
               onChange={(e) => setSourceLang(e.target.value)}
               variant="outlined"
               fullWidth
@@ -220,8 +218,6 @@ const Test = () => {
           <div>
             <label>Choose a Target Language:</label>
             <Select
-              id="state"
-              form="statefrom"
               onChange={(e) => setTargetLang(e.target.value)}
               variant="outlined"
               fullWidth
