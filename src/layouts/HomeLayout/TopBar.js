@@ -98,6 +98,10 @@ function TopBar() {
   const classes = useStyles();
   const [openMenu, setOpenMenu] = React.useState(false);
   const user = useContext(UserContext);
+  const logoutHandler = () => {
+    window.sessionStorage.removeItem("token");
+    window.location.reload();
+  };
   return (
     <Box className={classes.navBar}>
       <Container>
@@ -146,10 +150,10 @@ function TopBar() {
               <Typography
                 variant="h6"
                 style={{ textDecoration: "none", color: "#fff" }}
-                to="/price"
+                to="/profile"
                 component={Link}
               >
-                Pricing
+                Profile
               </Typography>
             </Box>
 
@@ -158,11 +162,12 @@ function TopBar() {
                 <Box className={classes.options}>
                   <Button
                     className={classes.button1}
-                    to="/profile"
+                    to="/"
                     component={Link}
                     style={{ textDecoration: "none", color: "#fff" }}
+                    onClick={logoutHandler}
                   >
-                    Profile
+                    Logout
                   </Button>
                 </Box>
               ) : (

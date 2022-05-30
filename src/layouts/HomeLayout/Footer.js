@@ -50,9 +50,6 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "#fff",
   },
-  socialIcons: {
-    paddingLeft: "15px",
-  },
 }));
 function Footer() {
   const classes = useStyles();
@@ -62,7 +59,7 @@ function Footer() {
         <Grid container spacing={0} className={classes.grid}>
           <Grid item xl={12} sm={3} md={3} lg={3}>
             <Box>
-              <Typography style={{ paddingLeft: "20px" }}>Follow Us</Typography>
+              <Typography>Follow Us</Typography>
               <Box className={classes.socialIcons}>
                 <Link to="#" className={classes.deco}>
                   <FacebookIcon className={classes.icon} />
@@ -80,9 +77,7 @@ function Footer() {
             </Box>
           </Grid>
           <Grid item xl={12} sm={3} md={3} lg={3}>
-            <Typography style={{ paddingLeft: "20px" }}>
-              Company & Team
-            </Typography>
+            <Typography>Company & Team</Typography>
             <Box className={classes.item}>
               <ul>
                 <Link to="/about" className={classes.deco}>
@@ -102,9 +97,7 @@ function Footer() {
           </Grid>
           <Grid item xl={12} sm={3} md={3} lg={3}>
             <Box>
-              <Typography style={{ paddingLeft: "20px" }}>
-                Help & Support
-              </Typography>
+              <Typography>Help & Support</Typography>
               <Box className={classes.item}>
                 <ul>
                   <Link to="/support" className={classes.deco}>
@@ -121,7 +114,7 @@ function Footer() {
             </Box>
           </Grid>
           <Grid item xl={12} sm={3} md={3} lg={3}>
-            <Typography style={{ paddingLeft: "20px" }}>Tools</Typography>
+            <Typography>Tools</Typography>
             <Box className={classes.item}>
               <ul>
                 <Link to="/" className={classes.deco}>
