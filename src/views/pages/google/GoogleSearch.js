@@ -52,9 +52,15 @@ const GoogleSearch = () => {
         />
         <Box mt={2}>
           {isLoading ? (
-            <Button variant="outlined">Loading</Button>
+            <Button variant="outlined" disabled={isLoading}>
+              Loading
+            </Button>
           ) : (
-            <Button variant="outlined" onClick={() => googleSearch()}>
+            <Button
+              variant="outlined"
+              onClick={() => googleSearch()}
+              disabled={isLoading}
+            >
               Submit
             </Button>
           )}
