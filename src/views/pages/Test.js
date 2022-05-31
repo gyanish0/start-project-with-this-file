@@ -15,6 +15,7 @@ import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
 import "react-data-table-component-extensions/dist/index.css";
+import CircleLoader from "react-spinners/CircleLoader";
 import { calculateTimeLeft } from "../../utils";
 const endTime = 1659763805;
 const columns = [
@@ -86,7 +87,6 @@ const Test = () => {
     }
   };
   const getLanguages = async () => {
-    setLoading(true);
     try {
       const res = await axios.get(
         "https://google-translate1.p.rapidapi.com/language/translate/v2/languages",
@@ -100,7 +100,6 @@ const Test = () => {
       );
       if (res.status === 200) {
         setLanguages(res.data.data.languages);
-        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -128,11 +127,16 @@ const Test = () => {
   };
 
   const translateText = async () => {
+    setLoading(true);
     try {
       const res = await axios.request(options);
-      setResult(res.data.data.translations[0].translatedText);
+      if (res.status === 200) {
+        setResult(res.data.data.translations[0].translatedText);
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -161,30 +165,17 @@ const Test = () => {
           </Typography>
         </>
       )}
-      {loading === false ? (
-        <div>
-          <DataTableExtensions {...tableData}>
-            <DataTable
-              noHeader
-              defaultSortField="id"
-              defaultSortAsc={false}
-              pagination
-              highlightOnHover
-            />
-          </DataTableExtensions>
-        </div>
-      ) : (
-        <div
-          style={{
-            height: "80vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <CircularProgress />
-        </div>
-      )}
+      <div>
+        <DataTableExtensions {...tableData}>
+          <DataTable
+            noHeader
+            defaultSortField="id"
+            defaultSortAsc={false}
+            pagination
+            highlightOnHover
+          />
+        </DataTableExtensions>
+      </div>
       <Grid container spacing={3}>
         <Grid item lg={6} md={6} sm={6} xs={12}>
           <div>
@@ -243,9 +234,16 @@ const Test = () => {
         </Grid>
       </Grid>
       <Box mt={2}>
-        <Button variant="outlined" onClick={() => translateText()}>
-          Submit
-        </Button>
+        {loading ? (
+          <Button variant="outlined" disabled={loading}>
+            Loading..&nbsp;&nbsp;
+            <CircleLoader color="#85199b" size={20} />
+          </Button>
+        ) : (
+          <Button variant="outlined" onClick={() => translateText()}>
+            Submit
+          </Button>
+        )}
       </Box>
     </Container>
   );

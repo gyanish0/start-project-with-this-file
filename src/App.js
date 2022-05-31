@@ -9,6 +9,7 @@ import HomeLayout from "./layouts/HomeLayout";
 import PageLoading from "./components/PageLoading";
 import Test from "./views/pages/Test";
 import GoogleSearch from "./views/pages/google/GoogleSearch";
+import Translate from "./views/pages/translate/Translate";
 // import AboutLayout from "./layouts/AboutLayout";
 
 const Home = lazy(() => import("./views/pages/Home/Home"));
@@ -50,6 +51,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="demo" element={<Test />} />
           <Route path="search" element={<GoogleSearch />} />
+          <Route path="translate" element={<Translate />} />
         </Routes>
       </Suspense>
       <ToastContainer />
