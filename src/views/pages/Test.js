@@ -59,7 +59,7 @@ const columns = [
 
 const Test = () => {
   const [timeLeft, setTimeLeft] = useState("");
-  const [desh, setDesh] = useState([]);
+  // const [desh, setDesh] = useState([]);
   const [loading, setLoading] = useState(false);
   const [languages, setLanguages] = useState([]);
   const [targetLang, setTargetLang] = useState("hi");
@@ -73,18 +73,18 @@ const Test = () => {
     return () => clearTimeout(timer);
   });
 
-  const getData = async () => {
-    setLoading(false);
-    try {
-      const res = await axios.get("https://restcountries.com/v3.1/all");
-      if (res.status === 200) {
-        setDesh(res.data);
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getData = async () => {
+  //   setLoading(false);
+  //   try {
+  //     const res = await axios.get("https://restcountries.com/v3.1/all");
+  //     if (res.status === 200) {
+  //       setDesh(res.data);
+  //       setLoading(false);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const getLanguages = async () => {
     try {
       const res = await axios.get(
@@ -142,7 +142,7 @@ const Test = () => {
   const tableData = {
     columns,
     exportHeaders: false,
-    data: desh,
+    // data: desh,
     print: false,
     selector: "id",
   };

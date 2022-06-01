@@ -37,30 +37,30 @@ const Translate = () => {
     },
   };
 
-  const number = {
-    method: "GET",
-    url: "https://numbers-spell.p.rapidapi.com/numbers",
-    params: {
-      text: "2387990870981783454354354438746344583543448448785238799087098178345435435443874634458354344844878523879908709817834543543544387463445835434484487852387990870981783454354354438746344583543448448785",
-    },
-    headers: {
-      "X-FunTranslations-Api-Secret": "23879908709817834",
-      "X-RapidAPI-Host": "numbers-spell.p.rapidapi.com",
-      "X-RapidAPI-Key": "3879e8726amsh28d0bdcae7d71c1p148e92jsna2f2b5a6ca87",
-    },
-  };
+  // const number = {
+  //   method: "GET",
+  //   url: "https://numbers-spell.p.rapidapi.com/numbers",
+  //   params: {
+  //     text: "2387990870981783454354354438746344583543448448785238799087098178345435435443874634458354344844878523879908709817834543543544387463445835434484487852387990870981783454354354438746344583543448448785",
+  //   },
+  //   headers: {
+  //     "X-FunTranslations-Api-Secret": "23879908709817834",
+  //     "X-RapidAPI-Host": "numbers-spell.p.rapidapi.com",
+  //     "X-RapidAPI-Key": "3879e8726amsh28d0bdcae7d71c1p148e92jsna2f2b5a6ca87",
+  //   },
+  // };
 
-  const getNumber = async () => {
-    try {
-      const res = await axios.request(number);
-      console.log(res.data.contents.translated);
-      if (res.status === 200) {
-        setLanguages(res.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getNumber = async () => {
+  //   try {
+  //     const res = await axios.request(number);
+  //     console.log(res.data.contents.translated);
+  //     if (res.status === 200) {
+  //       setLanguages(res.data);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   //   useEffect(() => {
   //     getNumber();
   //   }, []);
