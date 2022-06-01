@@ -86,6 +86,7 @@ const RandomImages = () => {
                         style={{
                           boxShadow: "1px 2px 9px #F4AAB9",
                           padding: "3px",
+                          borderRadius: "5px",
                         }}
                       >
                         <a
