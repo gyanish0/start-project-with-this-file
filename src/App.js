@@ -26,6 +26,8 @@ function App() {
         <Routes comonent={HomeLayout}>
           <Route path="/" element={<HomeLayout />}>
             <Route index element={<Home />} />
+            <Route path="demo" element={<RandomImages />} />
+
             <Route
               path="/git"
               element={
@@ -49,7 +51,6 @@ function App() {
             <Route index element={<GitPort />} />
           </Route> */}
           <Route path="*" element={<NotFound />} />
-          <Route path="demo" element={<RandomImages />} />
           <Route path="search" element={<GoogleSearch />} />
           <Route path="translate" element={<Translate />} />
         </Routes>
