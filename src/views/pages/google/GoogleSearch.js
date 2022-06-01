@@ -3,13 +3,11 @@ import {
   Button,
   CircularProgress,
   Container,
-  LinearProgress,
   TextField,
   Typography,
 } from "@material-ui/core";
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const GoogleSearch = () => {
   const [getInput, setGetInput] = useState("");

@@ -4,7 +4,6 @@ import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { calculateTimeLeft } from "../../../utils";
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 const RandomImages = () => {
   const endTime = 1659763805;
   const [images, setImages] = useState([]);
