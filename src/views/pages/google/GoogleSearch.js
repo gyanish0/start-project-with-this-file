@@ -94,6 +94,34 @@ const GoogleSearch = () => {
             </Box>
           )}
         </Box>
+        <div
+          style={{
+            position: "relative",
+            paddingBottom: "56.25%",
+            overflow: "hidden",
+            marginTop: "10px",
+          }}
+        >
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/WMolA7QMP5w"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style={{
+              overflow: "hidden",
+              border: "0",
+              alignSelf: "center",
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          ></iframe>
+        </div>
       </Container>
     </Box>
   );
