@@ -1,4 +1,4 @@
-import { LinearProgress, Typography } from "@material-ui/core";
+import { Container, LinearProgress, Typography } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import axios from "axios";
 import moment from "moment";
@@ -38,64 +38,67 @@ const RandomImages = () => {
   }, [page]);
   return (
     <div>
-      <div
-        style={{
-          margin: "20px 0px",
-          resize: "both",
-          overflow: "auto",
-        }}
-      >
-        {parseFloat(endTime) < moment().unix() ? (
-          <Typography variant="h6">Expired</Typography>
+      <Container>
+        <div
+          style={{
+            margin: "20px 0px",
+            resize: "both",
+            overflow: "auto",
+          }}
+        >
+          {parseFloat(endTime) < moment().unix() ? (
+            <Typography variant="h6">Expired</Typography>
+          ) : (
+            <>
+              <Typography variant="h6">
+                {" "}
+                {timeLeft.days ? timeLeft.days && timeLeft.days : "0"}
+                d:
+                {timeLeft.hours ? timeLeft.hours && timeLeft.hours : "0"}
+                h:
+                {timeLeft.minutes ? timeLeft.minutes && timeLeft.minutes : "0"}m
+                :{timeLeft.seconds ? timeLeft.seconds && timeLeft.seconds : "0"}
+                s
+              </Typography>
+            </>
+          )}
+        </div>
+        <h1>Random Images</h1>
+        <div
+          style={{
+            margin: "20px 0px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Pagination
+            count={10}
+            color="primary"
+            onChange={(e, v) => setPage(v)}
+          />
+        </div>
+        {loading ? (
+          <div style={{ marginTop: "200px" }}>
+            <LinearProgress />
+          </div>
         ) : (
-          <>
-            <Typography variant="h6">
-              {" "}
-              {timeLeft.days ? timeLeft.days && timeLeft.days : "0"}
-              d:
-              {timeLeft.hours ? timeLeft.hours && timeLeft.hours : "0"}
-              h:
-              {timeLeft.minutes ? timeLeft.minutes && timeLeft.minutes : "0"}m :
-              {timeLeft.seconds ? timeLeft.seconds && timeLeft.seconds : "0"}s
-            </Typography>
-          </>
+          <div mt={3}>
+            {images &&
+              images.map((image) => (
+                <a
+                  download
+                  href={image.download_url}
+                  title={image.author}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={image.id}
+                >
+                  <img alt="ImageName" src={image.download_url} />
+                </a>
+              ))}
+          </div>
         )}
-      </div>
-      <h1>Random Images</h1>
-      <div
-        style={{
-          margin: "20px 0px",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Pagination
-          count={10}
-          color="primary"
-          onChange={(e, v) => setPage(v)}
-        />
-      </div>
-      {loading ? (
-        <div style={{ marginTop: "50px" }}>
-          <LinearProgress />
-        </div>
-      ) : (
-        <div mt={3}>
-          {images &&
-            images.map((image) => (
-              <a
-                download
-                href={image.download_url}
-                title={image.author}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={image.id}
-              >
-                <img alt="ImageName" src={image.download_url} />
-              </a>
-            ))}
-        </div>
-      )}
+      </Container>
     </div>
   );
 };
