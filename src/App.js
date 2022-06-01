@@ -7,9 +7,9 @@ import NotFound from "./components/NotFound";
 import AuthGuard from "./components/AuthGuard";
 import HomeLayout from "./layouts/HomeLayout";
 import PageLoading from "./components/PageLoading";
-import Test from "./views/pages/Test";
 import GoogleSearch from "./views/pages/google/GoogleSearch";
 import Translate from "./views/pages/translate/Translate";
+import RandomImages from "./views/pages/user/RandomImages";
 // import AboutLayout from "./layouts/AboutLayout";
 
 const Home = lazy(() => import("./views/pages/Home/Home"));
@@ -49,7 +49,7 @@ function App() {
             <Route index element={<GitPort />} />
           </Route> */}
           <Route path="*" element={<NotFound />} />
-          <Route path="demo" element={<Test />} />
+          <Route path="demo" element={<RandomImages />} />
           <Route path="search" element={<GoogleSearch />} />
           <Route path="translate" element={<Translate />} />
         </Routes>
