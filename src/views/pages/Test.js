@@ -16,6 +16,7 @@ import DataTableExtensions from "react-data-table-component-extensions";
 import "react-data-table-component-extensions/dist/index.css";
 import CircleLoader from "react-spinners/CircleLoader";
 import { calculateTimeLeft } from "../../utils";
+import RandomImages from "./user/RandomImages";
 const endTime = 1659763805;
 const columns = [
   {
@@ -85,28 +86,28 @@ const Test = () => {
   //     console.log(error);
   //   }
   // };
-  const getLanguages = async () => {
-    try {
-      const res = await axios.get(
-        "https://google-translate1.p.rapidapi.com/language/translate/v2/languages",
-        {
-          headers: {
-            "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
-            "X-RapidAPI-Key":
-              "3879e8726amsh28d0bdcae7d71c1p148e92jsna2f2b5a6ca87",
-          },
-        }
-      );
-      if (res.status === 200) {
-        setLanguages(res.data.data.languages);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getLanguages();
-  }, []);
+  // const getLanguages = async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       "https://google-translate1.p.rapidapi.com/language/translate/v2/languages",
+  //       {
+  //         headers: {
+  //           "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
+  //           "X-RapidAPI-Key":
+  //             "3879e8726amsh28d0bdcae7d71c1p148e92jsna2f2b5a6ca87",
+  //         },
+  //       }
+  //     );
+  //     if (res.status === 200) {
+  //       setLanguages(res.data.data.languages);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getLanguages();
+  // }, []);
 
   const encodedParams = new URLSearchParams();
   encodedParams.append("q", getInput);
@@ -177,7 +178,7 @@ const Test = () => {
       </div>
       <Grid container spacing={3}>
         <Grid item lg={6} md={6} sm={6} xs={12}>
-          <div>
+          {/* <div>
             <label>Choose a Source Language:</label>
             <Select
               onChange={(e) => setSourceLang(e.target.value)}
@@ -191,7 +192,7 @@ const Test = () => {
                 </MenuItem>
               ))}
             </Select>
-          </div>
+          </div> */}
           <Box mt={3}>
             <TextField
               id="outlined-multiline-static"
@@ -205,7 +206,7 @@ const Test = () => {
           </Box>
         </Grid>
         <Grid item lg={6} md={6} sm={6} xs={12}>
-          <div>
+          {/* <div>
             <label>Choose a Target Language:</label>
             <Select
               onChange={(e) => setTargetLang(e.target.value)}
@@ -219,7 +220,7 @@ const Test = () => {
                 </MenuItem>
               ))}
             </Select>
-          </div>
+          </div> */}
           <Box mt={3}>
             <TextField
               id="outlined-multiline-static"
@@ -244,6 +245,9 @@ const Test = () => {
           </Button>
         )}
       </Box>
+      <div>
+        <RandomImages />
+      </div>
     </Container>
   );
 };
