@@ -94,7 +94,7 @@ const GoogleSearch = () => {
             </Box>
           )}
         </Box>
-        <div
+        {/* <div
           style={{
             position: "relative",
             paddingBottom: "56.25%",
@@ -121,7 +121,7 @@ const GoogleSearch = () => {
               height: "100%",
             }}
           ></iframe>
-        </div>
+        </div> */}
       </Container>
     </Box>
   );
