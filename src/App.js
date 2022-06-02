@@ -1,5 +1,4 @@
-import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Suspense } from "react";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
