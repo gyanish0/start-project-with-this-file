@@ -11,6 +11,7 @@ const GitRepos = lazy(() => import("./views/pages/github/GitRepos"));
 const Login = lazy(() => import("./views/pages/auth/Login2"));
 const SignUp = lazy(() => import("./views/pages/auth/SignUp2"));
 const Profile = lazy(() => import("./views/pages/user/Profile"));
+const News = lazy(() => import("./views/pages/news/News"));
 function AllRoutes() {
   let routes = useRoutes([
     {
@@ -53,6 +54,10 @@ function AllRoutes() {
         {
           path: "aboutme",
           element: <GoogleSearch />,
+        },
+        {
+          path: "news",
+          element: <News />,
         },
       ],
     },
