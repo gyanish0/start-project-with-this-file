@@ -1,6 +1,6 @@
 import { Box, Container, makeStyles, Typography } from "@material-ui/core";
-import React, { useContext } from "react";
-import { UserContext } from "../../../context/User";
+import React from "react";
+import { useGlobalContext } from "../../../context/User";
 const useStyles = makeStyles(() => ({
   box1: {
     height: "75vh",
@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
 }));
 const Profile = () => {
   const classes = useStyles();
-  const user = useContext(UserContext);
+  const user = useGlobalContext();
   console.log(user.user);
   return (
     <Box>

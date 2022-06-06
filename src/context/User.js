@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import apiConfig from "../config/ApiConfig";
 export const UserContext = createContext();
 
@@ -65,4 +65,8 @@ const Context = ({ children }) => {
   return <UserContext.Provider value={data1}>{children}</UserContext.Provider>;
 };
 
-export default Context;
+const useGlobalContext = () => {
+  return useContext(UserContext);
+};
+
+export { Context as default, useGlobalContext };

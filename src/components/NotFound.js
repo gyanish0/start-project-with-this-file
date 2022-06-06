@@ -15,17 +15,25 @@ const NotFound = () => {
       <div style={{ marginTop: "35px" }}>
         <img src="./images/not_found.png" alt="" style={{ width: "350px" }} />
         <div>
-          <h1 style={{ marginLeft: "50px" }}>Page Not Found 404 !</h1>
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            type="submit"
-            onClick={() => navigate("/")}
-            style={{ marginLeft: "115px" }}
+          <h1 style={{ textAlign: "center", padding: "20px 0px" }}>
+            Page Not Found 404 !
+          </h1>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            Go To Home
-          </Button>
+            <Button
+              variant="contained"
+              size="large"
+              color="primary"
+              type="submit"
+              onClick={() => navigate("/")}
+            >
+              Go To Home
+            </Button>
+          </div>
         </div>
       </div>
     </div>
