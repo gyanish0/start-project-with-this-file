@@ -7,13 +7,17 @@ import "./scss/main.css";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import Context from "./context/User";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 window.$name = "Gyanish";
 root.render(
   <>
     <BrowserRouter>
       <Context>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </Context>
     </BrowserRouter>
   </>
