@@ -11,7 +11,7 @@
 //     setLoading(true);
 //     try {
 //       const response = await axios.get(
-//         `https://api.unsplash.com/photos?page=${page}&per_page=15&client_id=NLQ_vXs0giX2TZ31EUhhGlhWUa1RQmme3LeU9Og_B5s`
+//         `https://api.unsplash.com/photos?page=${page}&per_page=15&client_id=NLQ_vXs0giX2TZ31EUhhGlhWUa1RQmme3LeU9Og_B5s&w=300&h=300`
 //       );
 //       if (response.status === 200) {
 //         setImages(response.data);
@@ -53,7 +53,7 @@
 //                       rel="noopener noreferrer"
 //                     >
 //                       <img
-//                         src={image.urls.full}
+//                         src={image.urls.small}
 //                         alt={image.alt_description}
 //                         style={{
 //                           maxWidth: "100%",
