@@ -1,3 +1,93 @@
+import { Button, Container } from "@material-ui/core";
+import axios from "axios";
+import React, { useState } from "react";
+
+const News = () => {
+  // https://blockchain-tool.mobiloitte.com/api/v1/admin/uploadFile
+  const [isLoading, setIsLoading] = useState(false);
+  const [tokenImage, setTokenImage] = useState("");
+  const [profileImageBlob, setprofileImageBlob] = useState("");
+
+  const onBannerImageChange = (e) => {
+    const value = URL.createObjectURL(e.target.files[0]);
+    setprofileImageBlob(value);
+    setTokenImage(e.target.files[0]);
+    // getBase64(e.target.files[0], (result) => {
+    //   setTokenImage(result)
+    // })
+  };
+
+  const uploadImg = async (values) => {
+    setIsLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("uploaded_file", tokenImage);
+      const res = await axios({
+        method: "POST",
+        url: "https://blockchain-tool.mobiloitte.com/api/v1/admin/uploadFile",
+        headers: {
+          token: window.sessionStorage.getItem("token"),
+        },
+        data: formData,
+      });
+      if (res.data.responseCode === 200) {
+        console.log("data---Response-", res);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  return (
+    <div>
+      <Container>
+        <h1>hello</h1>
+        <div>
+          <img
+            src={profileImageBlob}
+            alt=""
+            style={{ maxWidth: "250px", maxHeight: "250px" }}
+          />
+          {profileImageBlob === "" ? (
+            <>
+              <input
+                accept="image/*"
+                style={{ display: "block" }}
+                id="raised-button-file-img"
+                multiple
+                type="file"
+                onChange={onBannerImageChange}
+              />
+            </>
+          ) : (
+            <Button
+              variant="contained"
+              onClick={() => {
+                setprofileImageBlob("");
+                setTokenImage("");
+              }}
+            >
+              Remove
+            </Button>
+          )}
+          <Button
+            onClick={(values) => {
+              uploadImg(values);
+            }}
+            variant="contained"
+            disabled={isLoading}
+          >
+            Submit
+          </Button>
+        </div>
+      </Container>
+    </div>
+  );
+};
+
+export default News;
+
 // import axios from "axios";
 // import React, { useEffect } from "react";
 // import Pagination from "@material-ui/lab/Pagination";
