@@ -58,7 +58,7 @@ const GoogleSearch = () => {
       const res = await axios.request(hassuara);
       if (res.status === 200) {
         console.log(res.data.data.posts);
-        setResult(res.data.results);
+        setResult(res.data.data.posts);
         setIsLoading(false);
       }
     } catch (error) {
