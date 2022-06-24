@@ -24,11 +24,40 @@ const GoogleSearch = () => {
       "X-RapidAPI-Key": "3879e8726amsh28d0bdcae7d71c1p148e92jsna2f2b5a6ca87",
     },
   };
+  const hassuara = {
+    method: "POST",
+    url: `https://gyanish.hasura.app/v1/graphql`,
+    headers: {
+      "Content-Type": "application/json",
+      "x-hasura-admin-secret":
+        "zuL6datsJlDTWEgvXkyRu72Q99ME5w00CrVkCF67jD0kkTBd3LIUrHbWJHY94ceu",
+    },
+    data: {
+      query:
+        "query MyQuery {\n  posts {\n    updated_at\n    title\n    id\n    description\n    created_at\n  }\n}\n",
+      variables: null,
+      operationName: "MyQuery",
+    },
+  };
   const googleSearch = async () => {
     setIsLoading(true);
     try {
       const res = await axios.request(options);
       if (res.status === 200) {
+        setResult(res.data);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  const getData = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.request(hassuara);
+      if (res.status === 200) {
+        console.log(res.data.data.posts);
         setResult(res.data.results);
         setIsLoading(false);
       }
@@ -37,6 +66,7 @@ const GoogleSearch = () => {
       setIsLoading(false);
     }
   };
+
   return (
     <Box mt={4}>
       <Container>
@@ -56,7 +86,7 @@ const GoogleSearch = () => {
           ) : (
             <Button
               variant="outlined"
-              onClick={() => googleSearch()}
+              onClick={() => getData()}
               disabled={isLoading}
             >
               Submit
