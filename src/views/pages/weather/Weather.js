@@ -27,7 +27,9 @@ const Weather = () => {
 
   return (
     <div>
-      <h1>Weather</h1>
+      <h1 style={{ background: "#9d9ca2", height: `${window.innerHeight}px` }}>
+        Weather
+      </h1>
     </div>
   );
 };
