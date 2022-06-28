@@ -24,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: "10px",
-    paddingBottom: "10px",
   },
   left: {
     display: "flex",
@@ -38,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   options: {
-    padding: "15px",
+    padding: "8px 15px",
     cursor: "pointer",
     textDecoration: "none",
     "&:hover": {

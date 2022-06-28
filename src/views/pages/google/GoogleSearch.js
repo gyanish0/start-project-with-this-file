@@ -34,7 +34,7 @@ const GoogleSearch = () => {
     },
     data: {
       query:
-        "query MyQuery {\n  posts {\n    updated_at\n    title\n    id\n    description\n    created_at\n  }\n}\n",
+        "query MyQuery {\n  movies_movies_details {\n    updated_at\n    title\n    id\n    movies_text\n  movie_info\n  poster\n story_line\n screenshot\n created_at\n  }\n}\n",
       variables: null,
       operationName: "MyQuery",
     },
@@ -57,8 +57,8 @@ const GoogleSearch = () => {
     try {
       const res = await axios.request(hassuara);
       if (res.status === 200) {
-        console.log(res.data.data.posts);
-        setResult(res.data.data.posts);
+        // console.log(res.data.data.movies_movies_details);
+        setResult(res.data.data.movies_movies_details);
         setIsLoading(false);
       }
     } catch (error) {
@@ -118,6 +118,8 @@ const GoogleSearch = () => {
                     >
                       <Typography>{item.title}</Typography>
                     </a>
+
+                    <img src={item.poster} alt="" />
                     <Typography>{item.description}</Typography>
                   </Box>
                 ))}
